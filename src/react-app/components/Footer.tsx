@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import { Heart, Instagram, MessageCircle, Package } from 'lucide-react';
 
 // Use useMemo para navLinks para evitar recalculos desnecessários
