@@ -6,7 +6,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="backdrop-blur-lg bg-white/70 shadow-sm border-b border-white/20 sticky top-0 z-50">
+    <header
+      className="backdrop-blur-lg bg-white/70 shadow-sm border-b border-white/20 sticky top-0 z-50"
+      // Adiciona padding respeitando a Safe Area dos devices modernos
+      style={{ paddingTop: 'env(safe-area-inset-top)' }}
+    >
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -16,13 +20,25 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}  to="/colecoes" className="text-neutral-700 hover:text-amber-800 transition-colors font-light">
+            <Link
+              style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}
+              to="/colecoes"
+              className="text-neutral-700 hover:text-amber-800 transition-colors font-light"
+            >
               Coleções
             </Link>
-            <Link style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}  to="/galeria" className="text-neutral-700 hover:text-amber-800 transition-colors font-light">
+            <Link
+              style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}
+              to="/galeria"
+              className="text-neutral-700 hover:text-amber-800 transition-colors font-light"
+            >
               Galeria
             </Link>
-            <Link style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}  to="/sobre" className="text-neutral-700 hover:text-amber-800 transition-colors font-light">
+            <Link
+              style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}
+              to="/sobre"
+              className="text-neutral-700 hover:text-amber-800 transition-colors font-light"
+            >
               Sobre
             </Link>
           </nav>
@@ -45,7 +61,7 @@ export default function Header() {
             >
               <Instagram className="w-6 h-6" />
             </a>
-            
+
             {/* Mobile Menu Button */}
             <button
               className="md:hidden text-neutral-700 hover:text-amber-800 transition-colors"
@@ -62,7 +78,7 @@ export default function Header() {
             <div className="flex flex-col space-y-4">
               <Link
                 to="/colecoes"
-                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }} 
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}
                 className="text-neutral-700 hover:text-amber-800 transition-colors font-light"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -70,7 +86,7 @@ export default function Header() {
               </Link>
               <Link
                 to="/galeria"
-                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }} 
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}
                 className="text-neutral-700 hover:text-amber-800 transition-colors font-light"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -78,7 +94,7 @@ export default function Header() {
               </Link>
               <Link
                 to="/sobre"
-                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }} 
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 300, color: '#6B4423' }}
                 className="text-neutral-700 hover:text-amber-800 transition-colors font-light"
                 onClick={() => setIsMenuOpen(false)}
               >
