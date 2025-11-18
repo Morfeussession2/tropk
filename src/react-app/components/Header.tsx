@@ -5,32 +5,37 @@ import { Menu, X, MessageCircle, Instagram } from 'lucide-react';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Altura base em px + safe area top (leitura do valor real no browser)
+  // Você pode ajustar manualmente o valor base conforme desejar
+  const headerBaseHeight = 60; // px (ajuste se precisar para desktop/mobile)
+
   return (
     <>
       <style>{`
-        /* Expande o header, cobrindo status bar/notch */
         .super-header {
           position: fixed;
           left: 0;
           width: 100vw;
-          top: calc(-1 * env(safe-area-inset-top, 0px)); /* Expande para cima do topo real */
+          top: calc(-1 * env(safe-area-inset-top, 0px));
           z-index: 50;
-          /* Altura mínima do header */
-          min-height: 60px;
-          /* Garante visual imersivo em iPhone/iPad notch */
+          min-height: ${headerBaseHeight}px;
           padding-top: env(safe-area-inset-top, 0px);
-          /* Previne visual bug em aparelhos sem notch */
           background: rgba(255,255,255,0.7);
           -webkit-backdrop-filter: blur(20px);
           backdrop-filter: blur(20px);
           box-shadow: 0 2px 8px rgba(178,130,93,0.1);
           border-bottom: 1px solid rgba(255,255,255,0.2);
         }
+        .header-spacer {
+          width: 100vw;
+          min-height: calc(${headerBaseHeight}px + env(safe-area-inset-top, 0px));
+        }
         @media (max-width: 768px) {
           .super-header {
             min-height: 56px;
-            padding-left: 0;
-            padding-right: 0;
+          }
+          .header-spacer {
+            min-height: calc(56px + env(safe-area-inset-top, 0px));
           }
         }
       `}</style>
@@ -126,6 +131,8 @@ export default function Header() {
           )}
         </div>
       </header>
+      {/* Spacer visual para empurrar o conteúdo abaixo do header */}
+      <div className="header-spacer" />
     </>
   );
 }
