@@ -45,6 +45,7 @@ export default function Testimonials() {
   const cardsToRender = isMobile && flippedIdx !== null
     ? testimonials.filter((_, idx) => idx === flippedIdx)
     : testimonials;
+
   return (
     <section 
       style={{
@@ -74,7 +75,6 @@ export default function Testimonials() {
         .flip-card-container {
           perspective: 1000px;
         }
-
         .flip-card-inner {
           position: relative;
           width: 100%;
@@ -83,11 +83,16 @@ export default function Testimonials() {
           -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
         }
-
-        .flip-card-container:hover .flip-card-inner {
+        /* Hover apenas desktop */
+        @media (hover: hover) and (pointer: fine) {
+          .flip-card-container:hover .flip-card-inner {
+            transform: rotateY(180deg);
+          }
+        }
+        /* Clique mobile: aplicado via classe flipped */
+        .flip-card-inner.flipped {
           transform: rotateY(180deg);
         }
-
         .flip-card-front,
         .flip-card-back {
           position: absolute;
@@ -96,13 +101,11 @@ export default function Testimonials() {
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
         }
-        
         .flip-card-back {
           transform: rotateY(180deg);
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
         }
-
         .polaroid {
           background: white;
           padding: 15px;
@@ -114,7 +117,6 @@ export default function Testimonials() {
           max-width: 320px;
           margin: 0 auto;
         }
-
         .polaroid-image {
           width: 100%;
           height: 100%;
@@ -123,7 +125,6 @@ export default function Testimonials() {
           display: block;
           background: #f0f0f0;
         }
-
         .polaroid-caption {
           font-family: 'Montserrat', sans-serif;
           font-size: 18px;
@@ -133,7 +134,6 @@ export default function Testimonials() {
           margin-top: 5px;
           letter-spacing: 0.5px;
         }
-
         .polaroid-location {
           font-family: 'Montserrat', sans-serif;
           font-size: 14px;
@@ -142,7 +142,6 @@ export default function Testimonials() {
           text-align: center;
           margin-top: 2px;
         }
-
         @media (max-width: 768px) {
           .polaroid {
             padding-bottom: 30px
@@ -209,7 +208,6 @@ export default function Testimonials() {
                         <Star key={i} style={{ width: '16px', height: '16px', color: '#B2825D', fill: '#B2825D' }} />
                       ))}
                     </div>
-
                     {/* Testimonial Text */}
                     <p 
                       style={{
@@ -224,7 +222,6 @@ export default function Testimonials() {
                     >
                       "{testimonial.text}"
                     </p>
-
                     {/* Customer Info */}
                     <div className="flex items-center space-x-3">
                       <img
@@ -264,7 +261,6 @@ export default function Testimonials() {
                     </div>
                   </div>
                 </div>
-
                 {/* Back Side - Polaroid */}
                 <div className="flip-card-back" style={{ minHeight: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <div className="polaroid">
