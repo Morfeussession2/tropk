@@ -66,7 +66,17 @@ function ProcessSection() {
         height: '4px',
         background: 'linear-gradient(90deg, transparent 0%, rgba(178, 130, 93, 0.3) 50%, transparent 100%)'
       }} />
-
+      <style>{`
+        @media (max-width: 768px) {
+            .testimonials-title {
+              font-size: 40px !important;
+              letter-spacing: -2px !important;
+              line-height: 1.22 !important;
+              word-spacing: 2px !important;
+            }
+          }
+        }
+      `}</style>
       <div className="container mx-auto px-7">
         <div className="text-center mb-12">
           <h2
@@ -148,7 +158,7 @@ function ProcessSection() {
               lineHeight: 1.25,
               marginBottom: '1px'
             }}
-            className="sm:text-5xl text-2xl sm:[letter-spacing:-7px] [letter-spacing:-3px]"
+            className="testimonials-title sm:text-5xl text-2xl sm:[letter-spacing:-7px] [letter-spacing:-3px]"
           >
 
             <p>VAMOS</p><p> ENCOMENDAR?</p>
