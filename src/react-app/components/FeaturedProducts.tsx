@@ -366,7 +366,6 @@ const FeaturedProducts = memo(() => {
 
         .image-wrapper img {
           width: 100%;
-          height: 100%;
           object-fit: cover;
           display: block;
         }
@@ -492,9 +491,17 @@ const FeaturedProducts = memo(() => {
             letter-spacing: -3px;
           }
 
+          h2 {
+            letter-spacing: -3px !important;
+          }
+
           .product-price,
           .product-note {
             font-size: 18px;
+          }
+
+          .image-wrapper img {
+            height: 100%;
           }
         }
       `}</style>
@@ -528,6 +535,7 @@ const FeaturedProducts = memo(() => {
           padding-bottom: 60px;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
           width: 60% !important;
+          height: auto !important;
           max-width: 200px !important;
           margin: 0 !important;
         }
