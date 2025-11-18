@@ -80,6 +80,7 @@ export default function Testimonials() {
           width: 100%;
           min-height: 380px;
           transition: transform 0.8s;
+          -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
         }
 
@@ -92,12 +93,14 @@ export default function Testimonials() {
           position: absolute;
           width: 100%;
           height: 100%;
-          backface-visibility: hidden; !important;
-          }
-          
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        
         .flip-card-back {
           transform: rotateY(180deg);
-          backface-visibility: hidden; !important;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
 
         .polaroid {
@@ -177,12 +180,13 @@ export default function Testimonials() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, idx) => (
             <div 
               key={testimonial.id}
               className="flip-card-container"
+              onClick={() => isMobile && setFlippedIdx(flippedIdx === idx ? null : idx)}
             >
-              <div className="flip-card-inner">
+              <div className={`flip-card-inner${isMobile && flippedIdx === idx ? ' flipped' : ''}`}>
                 {/* Front Side - Depoimento */}
                 <div className="flip-card-front">
                   <div
